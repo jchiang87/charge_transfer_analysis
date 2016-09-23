@@ -7,7 +7,7 @@ based on a two component model of the trailed charge:
 q_n = q_0*(Q - b)*exp(-n/tau) + (Q - b)*N*cti**n*(1 - cti) + b
 ```
 
-Here `n` is the n-th overscan column, `q_n` is the mean DN/pixel in
+Here `n` refers to the n-th overscan column, `q_n` is the mean DN/pixel in
 that column, `Q` is the mean DN/pixel in the last imaging column, `b`
 is the bias level, and `N` is the number of serial transfers before
 the first overscan column (i.e., number of prescan + imaging pixels in
@@ -21,9 +21,9 @@ releases charge on some time scale `tau`.
 This code is intended to be run on high and low flux superflats that
 are generated as described in LCA-10103.  Since the bias levels don't
 seem to be consistent between those datasets, the `b` value is simply
-determined from the final column in each medianed superflat image.
+determined from the final overscan column in each medianed superflat image.
 
-## Set-up.
+## Set-up
 
 To run this code, one needs the LSST Stack setup and the [eotest
 package](https://github.com/lsst-camera-dh/eotest).  At SLAC, where
@@ -42,6 +42,13 @@ $ git clone git@github.com:jchiang87/charge_transfer_analysis.git
 $ setup -r charge_transfer_analysis -j
 $
 ```
+Once the `eotest` and `charge_transfer_analysis` code has been downloaded and built, the
+`git clone ...` and `scons ...` steps can be skipped.  The syntax of the setup command
+used above is
+```
+setup -r <directory of package> -j
+```
+so instead of the relative directory path, as shown in the example, absolute paths can be used.
 
 ## People
 * [Jim Chiang](https://github.com/jchiang87/charge-transfer-analysis/issues/new?body=@jchiang87) (SLAC)
